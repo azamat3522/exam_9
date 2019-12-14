@@ -15,8 +15,5 @@ router = DefaultRouter()
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('login/', obtain_auth_token, name='obtain_auth_token'),
-    path('logout/', LogoutView.as_view(), name='api_token_delete'),
-
 
 ]

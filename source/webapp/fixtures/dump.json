@@ -1,0 +1,105 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$kxUPkc4s0m4k$kmwpNHXyAN+vFKjP7iNAGVxx4rbP5XB+5RrjQw4l4Zw=",
+    "last_login": "2019-12-14T06:48:16.866Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-12-13T11:08:17.733Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 1,
+  "fields": {
+    "text": "good",
+    "photo": 1,
+    "author": 1,
+    "created_at": "2019-12-14T06:52:17.373Z"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 2,
+  "fields": {
+    "text": "bad",
+    "photo": 2,
+    "author": 1,
+    "created_at": "2019-12-14T06:52:27.456Z"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 3,
+  "fields": {
+    "text": "cool",
+    "photo": 3,
+    "author": 1,
+    "created_at": "2019-12-14T06:52:36.863Z"
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 1,
+  "fields": {
+    "photo": "photos/1_103210_zvh6V67_7SS3t2K.jpg",
+    "signature": "photo1",
+    "created_at": "2019-12-14T06:50:41.758Z",
+    "author": 1,
+    "count_likes": 2
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 2,
+  "fields": {
+    "photo": "photos/all-city-candy-snickers-candy-bar-19-oz-candy-bars-mars-chocolate-1-bar-7_IaSJYay_8exWxEo.jpg",
+    "signature": "photo2",
+    "created_at": "2019-12-14T06:51:21.889Z",
+    "author": 1,
+    "count_likes": 0
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 3,
+  "fields": {
+    "photo": "photos/thumb_jFnssee_s9GrqMJ_v1giOgL.jpeg",
+    "signature": "photo3",
+    "created_at": "2019-12-14T06:51:58.605Z",
+    "author": 1,
+    "count_likes": 0
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 4,
+  "fields": {
+    "photo": "",
+    "signature": "photo4",
+    "created_at": "2019-12-14T07:53:44.670Z",
+    "author": 1,
+    "count_likes": 1
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 5,
+  "fields": {
+    "photo": "photos/all-city-candy-snickers-candy-bar-19-oz-candy-bars-mars-chocolate-1-bar-712708_60_PzPErcz.jpg",
+    "signature": "photo5",
+    "created_at": "2019-12-14T07:54:40.482Z",
+    "author": 1,
+    "count_likes": 0
+  }
+}
+]

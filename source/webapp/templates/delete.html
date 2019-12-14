@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete{% endblock %}
+
+{% block menu %}
+    <li class="nav-item"><a href="{% url 'webapp:photo_detail' photo.pk %}" class="nav-link">View</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Delete Photo</h1>
+    <form action="{% url "webapp:photo_delete" photo.pk %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="submit" value="Confirm" class="btn btn-primary">
+        <p><a href="{% url 'webapp:photo_detail' photo.pk%}">Cancel</a></p>
+    </form>
+{% endblock %}

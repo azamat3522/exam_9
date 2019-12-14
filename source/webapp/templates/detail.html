@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}{{ photo.signature }}{% endblock %}
+{% block menu %}
+    <li class="nav-item"><a href="{% url 'webapp:photo_update' photo.pk %}" class="nav-link">Edit</a></li>
+{% endblock %}
+{% block content %}
+    <div class="text-center">
+{#        <p><a href="{% url 'webapp:review_add' product.pk %}" class="btn btn-primary">Add</a></p>#}
+        <h1>{{ photo.signature }}</h1>
+        <div class="row">
+            <div class="col col-12 col-sm-10 col-md-8 col-lg-6 m-auto">
+                {% if photo.photo %}
+                    <img src="{{ photo.photo.url }}" class="img-fluid" alt="{{ photo.signature }}">
+                {% else %}
+                    <img src="https://rusfermer.net/wp-content/plugins/fseo-plugins/plugins/common/img/no-photo-big.gif " class="h-50 d-inline-block" alt="{{ photo.photo }}">
+                {% endif %}
+            </div>
+        </div>
+        <p><b>Дата-время создания:</b> {{ photo.created_at}}</p>
+        <p><b>Подпись:</b> {{ photo.signature}}</p>
+        <p><b>Количество "лайков":</b> {{ photo.count_likes }} </p>
+        <p><a href="{% url 'webapp:photo_update' photo.pk %}" class="btn btn-primary">Edit</a></p>
+        <p><a href="{% url 'webapp:photo_delete' photo.pk %}" class="btn btn-danger">Delete</a></p>
+    <h2>Comments</h2>
+    <hr/>
+    {% for comment in photo.comments.all %}
+{#        <p><a href="{% url "accounts:detail" review.pk%}">{{ review.author }}</a></p>#}
+        <p>{{ comment.text }}</p>
+        <p>{{ comment.author }}</p>
+        <p>{{ comment.created_at }}</p>
+{#        <p><a href="{% url 'webapp:review_update' review.pk %}" class="btn btn-primary">Edit</a></p>#}
+{#        <p><a href="{% url 'webapp:review_delete' review.pk %}" class="btn btn-primary">Delete</a></p>#}
+        <hr/>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}

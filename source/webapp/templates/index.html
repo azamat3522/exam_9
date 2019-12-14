@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Photos{% endblock %}
+{% block menu %}
+    <li class="nav-item"><a href="{% url 'webapp:photo_create' %}" class="nav-link">Добавить фото</a></li>
+{% endblock %}
+{% block content %}
+    <h1 class="text-center">Фотографии</h1>
+    <div class="row" >
+        {% for photo in photo_list%}
+            <div class="col col-3" style="margin-bottom: 20px">
+                <div class="card" style="height: 30rem;">
+                    {% if photo.photo %}
+                        <img src="{{ photo.photo.url }}" class="h-50 d-inline-block" alt="{{ photo.signature }} ">
+                    {% else %}
+                        <img src="https://rusfermer.net/wp-content/plugins/fseo-plugins/plugins/common/img/no-photo-big.gif " class="h-50 d-inline-block" alt="{{ photo.photo }}">
+                    {% endif %}
+                    <div class="card-body" >
+                        <h5 class="card-title">{{ photo.signature }}</h5>
+                        <p class="card-text">{{ photo.author }}</p>
+                        <p class="card-text">{{ photo.created_at}}</p>
+                        <p class="card-text">{{ photo.count_likes }}</p>
+                        <a href="{% url "webapp:photo_detail" photo.pk %}"
+                           class="btn btn-primary">More</a>
+                        <a href="{% url "webapp:photo_update" photo.pk %}"
+                           class="btn btn-primary">Edit</a>
+                        <a href="{% url "webapp:photo_delete" photo.pk %}"
+                           class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

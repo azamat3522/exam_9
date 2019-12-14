@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
@@ -19,13 +19,11 @@ class PhotoDetailView(DetailView):
     template_name = 'detail.html'
 
 
-class PhotoCreateView(CreateView):
+class PhotoCreateView(LoginRequiredMixin, CreateView):
     model = Photo
     template_name = 'create.html'
     form_class = PhotoForm
 
-    # permission_required = 'webapp.add_product'
-    # permission_denied_message = "Доступ запрещён"
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -37,22 +35,22 @@ class PhotoCreateView(CreateView):
         return reverse('webapp:index')
 
 
-class PhotoUpdateView(UpdateView):
+class PhotoUpdateView(PermissionRequiredMixin, UpdateView):
     model = Photo
     template_name = 'update.html'
     context_object_name = 'photo'
     form_class = PhotoForm
-    # permission_required = 'webapp.change_product'
-    # permission_denied_message = "Доступ запрещён"
+    permission_required = 'webapp.change_photo'
+    permission_denied_message = "Доступ запрещён"
 
     def get_success_url(self):
         return reverse('webapp:photo_detail', kwargs={'pk': self.object.pk})
 
 
-class PhotoDeleteView(DeleteView):
+class PhotoDeleteView(PermissionRequiredMixin, DeleteView):
     model = Photo
     template_name = 'delete.html'
     context_object_name = 'photo'
     success_url = reverse_lazy('webapp:index')
-    # permission_required = 'webapp.delete_product'
-    # permission_denied_message = "Доступ запрещён"
+    permission_required = 'webapp.delete_photo'
+    permission_denied_message = "Доступ запрещён"

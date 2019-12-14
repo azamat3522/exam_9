@@ -5,8 +5,7 @@
 {% endblock %}
 {% block content %}
     <div class="text-center">
-{#        <p><a href="{% url 'webapp:review_add' product.pk %}" class="btn btn-primary">Add</a></p>#}
-        <h1>{{ photo.signature }}</h1>
+{#        <h1>{{ photo.signature }}</h1>#}
         <div class="row">
             <div class="col col-12 col-sm-10 col-md-8 col-lg-6 m-auto">
                 {% if photo.photo %}
@@ -21,19 +20,31 @@
         <p><b>Количество "лайков":</b> {{ photo.count_likes }} </p>
         <p><a href="{% url 'webapp:photo_update' photo.pk %}" class="btn btn-primary">Edit</a></p>
         <p><a href="{% url 'webapp:photo_delete' photo.pk %}" class="btn btn-danger">Delete</a></p>
+        <hr/>
     <h2>Comments</h2>
     <hr/>
     {% for comment in photo.comments.all %}
-{#        <p><a href="{% url "accounts:detail" review.pk%}">{{ review.author }}</a></p>#}
         <p>{{ comment.text }}</p>
         <p>{{ comment.author }}</p>
         <p>{{ comment.created_at }}</p>
-{#        <p><a href="{% url 'webapp:review_update' review.pk %}" class="btn btn-primary">Edit</a></p>#}
-{#        <p><a href="{% url 'webapp:review_delete' review.pk %}" class="btn btn-primary">Delete</a></p>#}
         <hr/>
     {% empty %}
         <p>No comments yet.</p>
     {% endfor %}
+    <div class="modal-body">
+        <form id="comment_form" class="d-inline">
+            <div class="form-group">
+                <input class="form-control" type="text" name="text" id="text_input" placeholder="Текст">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="photo" name="photo" id="photo_input" placeholder="Photo">
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary mr-auto" id="form_submit">send</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+    </div>
     </div>
 
 

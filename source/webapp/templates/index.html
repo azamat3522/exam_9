@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}Photos{% endblock %}
 {% block menu %}
-    <li class="nav-item"><a href="{% url 'webapp:photo_create' %}" class="nav-link">Добавить фото</a></li>
+    <li class="nav-item"><a href="{% url 'webapp:photo_create' %}" class="nav-link">Add photo</a></li>
 {% endblock %}
 {% block content %}
-    <h1 class="text-center">Фотографии</h1>
+    <h1 class="text-center">Gallery</h1>
     <div class="row" >
         {% for photo in photo_list%}
             <div class="col col-3" style="margin-bottom: 20px">

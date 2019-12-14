@@ -132,4 +132,14 @@ MEDIA_URL = '/uploads/'
 LOGIN_REDIRECT_URL = reverse_lazy('webapp:index')
 LOGOUT_REDIRECT_URL = reverse_lazy('webapp:index')
 
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'rest_framework.renderers.JSONRenderer',
+    # )
+}
+
 

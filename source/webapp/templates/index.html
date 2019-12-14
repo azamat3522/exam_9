@@ -21,10 +21,12 @@
                         <p class="card-text">{{ photo.count_likes }}</p>
                         <a href="{% url "webapp:photo_detail" photo.pk %}"
                            class="btn btn-primary">More</a>
-                        <a href="{% url "webapp:photo_update" photo.pk %}"
-                           class="btn btn-primary">Edit</a>
-                        <a href="{% url "webapp:photo_delete" photo.pk %}"
-                           class="btn btn-primary">Delete</a>
+                        {% if perms.webapp.change_photo %}
+                            <a href="{% url "webapp:photo_update" photo.pk %}" class="btn btn-primary">Edit</a>
+                        {% endif %}
+                        {% if perms.webapp.delete_photo %}
+                            <a href="{% url "webapp:photo_delete" photo.pk %}" class="btn btn-primary">Delete</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

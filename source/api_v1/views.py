@@ -29,7 +29,7 @@ class CommentViewSet(ModelViewSet):
         return Response({'id': photo.pk, 'count_likes': photo.count_likes})
 
     @action(methods=['post'], detail=True)
-    def like_up(self, request, pk=None):
+    def like_down(self, request, pk=None):
         photo = self.get_object()
         photo.count_likes -= 1
         photo.save()

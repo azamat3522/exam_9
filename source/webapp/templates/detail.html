@@ -18,8 +18,12 @@
         <p><b>Дата-время создания:</b> {{ photo.created_at}}</p>
         <p><b>Подпись:</b> {{ photo.signature}}</p>
         <p><b>Количество "лайков":</b> {{ photo.count_likes }} </p>
-        <p><a href="{% url 'webapp:photo_update' photo.pk %}" class="btn btn-primary">Edit</a></p>
-        <p><a href="{% url 'webapp:photo_delete' photo.pk %}" class="btn btn-danger">Delete</a></p>
+        {% if perms.webapp.change_photo %}
+            <p><a href="{% url 'webapp:photo_update' photo.pk %}" class="btn btn-primary">Edit</a></p>
+        {% endif %}
+        {% if perms.webapp.delete_photo %}
+            <p><a href="{% url 'webapp:photo_delete' photo.pk %}" class="btn btn-danger">Delete</a></p>
+        {% endif %}
         <hr/>
     <h2>Comments</h2>
     <hr/>
@@ -38,12 +42,12 @@
             </div>
             <div class="form-group">
                 <input class="form-control" type="photo" name="photo" id="photo_input" placeholder="Photo">
+                <button type="submit" class="btn btn-primary mr-auto" id="form_submit">send</button>
             </div>
         </form>
     </div>
     <div class="modal-footer">
         <button type="submit" class="btn btn-primary mr-auto" id="form_submit">send</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
     </div>
     </div>
 

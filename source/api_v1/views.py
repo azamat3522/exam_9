@@ -11,13 +11,8 @@ class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-    # def get_queryset(self):
-    #     if self.request.user.is_authenticated:
-    #         return Comment.objects.all()
-    #     return Comment.objects.filter(status=QUOTE_APPROOVED)
-
     def get_permissions(self):
-        if self.action not in ['update', 'partial_update', 'destroy']:
+        if self.action not in ['update', 'partial_update', 'destroy', 'create']:
             return [AllowAny()]
         return [IsAuthenticated()]
 
